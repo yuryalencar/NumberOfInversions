@@ -1,2 +1,2 @@
 # NumberOfInversions
-Algorithm for counting inversions numbers to sort a vector
+Algorithm for counting inversions numbers to sort a vector using MergeSort
