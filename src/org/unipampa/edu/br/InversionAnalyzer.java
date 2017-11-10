@@ -21,21 +21,21 @@ public class InversionAnalyzer {
     private long mergeSort(Integer[] data, int start, int end) {
         long count = 0;
         if (start < end) {
-            int beginning = (start + end) / 2;
-            count = mergeSort(data, start, beginning)
-                    + mergeSort(data, beginning + 1, end)
-                    + merge(data, start, beginning, end);
+            int center = (start + end) / 2;
+            count = mergeSort(data, start, center)
+                    + mergeSort(data, center + 1, end)
+                    + merge(data, start, center, end);
         }
         return count;
     }
 
-    private long merge(Integer[] data, int start, int beginning, int end) {
+    private long merge(Integer[] data, int start, int center, int end) {
         Integer[] aux = data.clone();
         int i = start;
-        int j = beginning + 1;
+        int j = center + 1;
         long count = 0;
         for (int k = start; k <= end; k++) {
-            if (i > beginning) {
+            if (i > center) {
                 data[k] = aux[j++];
             } else if (j > end) {
                 data[k] = aux[i++];
@@ -43,7 +43,7 @@ public class InversionAnalyzer {
                 data[k] = aux[i++];
             } else {
                 data[k] = aux[j++];
-                count += beginning - i + 1;
+                count += center - i + 1;
             }
         }
         return count;
